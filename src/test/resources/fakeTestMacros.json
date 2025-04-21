@@ -1,0 +1,60 @@
+[
+  {
+    "_class": "org.qubership.atp.macros.core.model.Macros",
+    "uuid": "1f177539-7811-4dc2-a932-0a8b627b9ee2",
+    "name": "TEST_OPTIONAL",
+    "description": "Test",
+    "projectUuid": null,
+    "engine": "javascript",
+    "content": "function main(test, optional) {    var result = test;  result += optional;  return result;}",
+    "parameters": [
+      {
+        "uuid": "69f9e4bb-7139-43bf-a5bd-5e26bce507e3",
+        "name": "test",
+        "description": "",
+        "defaultValue": "",
+        "optional": false
+      },
+      {
+        "uuid": "69f9e4bb-7139-43bf-a5bd-5e26bce507e3",
+        "name": "optional",
+        "description": "",
+        "defaultValue": "Im optional",
+        "optional": true
+      }
+    ],
+    "createdBy": null,
+    "createdWhen": null,
+    "modifiedBy": null,
+    "modifiedWhen": null
+  },
+  {
+    "_class": "org.qubership.atp.macros.core.model.Macros",
+    "uuid": "1f177539-7811-4dc2-a932-0a8b627b9ee2",
+    "name": "TEST_MANDATORY",
+    "description": "Test",
+    "projectUuid": null,
+    "engine": "javascript",
+    "content": "function main(test, mandatory) {    var result = test;  result += mandatory;  return result;}",
+    "parameters": [
+      {
+        "uuid": "69f9e4bb-7139-43bf-a5bd-5e26bce507e3",
+        "name": "test",
+        "description": "",
+        "defaultValue": "",
+        "optional": false
+      },
+      {
+        "uuid": "69f9e4bb-7139-43bf-a5bd-5e26bce507e3",
+        "name": "mandatory",
+        "description": "",
+        "defaultValue": "Im mandatory",
+        "optional": false
+      }
+    ],
+    "createdBy": null,
+    "createdWhen": null,
+    "modifiedBy": null,
+    "modifiedWhen": null
+  }
+]
