@@ -5,6 +5,7 @@
 ## How to use as library in your service
 
 Add dependency
+
 ```
 <dependency>
     <groupId>org.qubership.atp</groupId>
@@ -12,4 +13,3 @@ Add dependency
     <version>1.0.26</version>
 </dependency>
 ```
-
