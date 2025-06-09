@@ -30,9 +30,6 @@
         <maven-surefire-plugin.version>2.22.0</maven-surefire-plugin.version>
         <mapstruct.version>1.5.5.Final</mapstruct.version>
         <lombok.version>1.18.30</lombok.version>
-        <maven.pmd.plugin.version>3.8</maven.pmd.plugin.version>
-        <pmd.version>7.0.0</pmd.version>
-        <spotbugs.maven.plugin.version>4.7.3.0</spotbugs.maven.plugin.version>
     </properties>
 
     <name>${project.groupId}:${project.artifactId}</name>
@@ -54,7 +51,7 @@
     </developers>
     <scm>
         <connection>scm:git:https//github.com/Netcracker/qubership-testing-platform-macros-core-library.git</connection>
-        <developerConnection>scm:git:https://github.com:Netcracker/qubership-testing-platform-macros-core-library.git</developerConnection>
+        <developerConnection>scm:git:https://github.com/Netcracker/qubership-testing-platform-macros-core-library.git</developerConnection>
         <url>scm:git:https://github.com/Netcracker/qubership-testing-platform-macros-core-library/tree/main</url>
     </scm>
 
