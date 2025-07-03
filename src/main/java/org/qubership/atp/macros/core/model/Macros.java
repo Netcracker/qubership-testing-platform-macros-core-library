@@ -41,6 +41,7 @@ public class Macros extends AbstractEntity {
     private UUID projectUuid;
     private String engine;
     private String content;
+    private boolean technical;
 
     protected List<MacrosParameter> parameters = new ArrayList<>();
 
