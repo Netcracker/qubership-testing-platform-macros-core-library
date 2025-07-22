@@ -26,7 +26,8 @@
     "createdBy": null,
     "createdWhen": null,
     "modifiedBy": null,
-    "modifiedWhen": null
+    "modifiedWhen": null,
+    "technical": false
   },
   {
     "_class": "org.qubership.atp.macros.core.model.Macros",
@@ -62,7 +63,8 @@
     "createdBy": null,
     "createdWhen": null,
     "modifiedBy": null,
-    "modifiedWhen": null
+    "modifiedWhen": null,
+    "technical": false
   },
   {
     "_class": "org.qubership.atp.macros.core.model.Macros",
@@ -98,7 +100,8 @@
     "createdBy": null,
     "createdWhen": null,
     "modifiedBy": null,
-    "modifiedWhen": null
+    "modifiedWhen": null,
+    "technical": false
   },
   {
     "_class": "org.qubership.atp.macros.core.model.Macros",
@@ -134,7 +137,8 @@
     "createdBy": null,
     "createdWhen": null,
     "modifiedBy": null,
-    "modifiedWhen": null
+    "modifiedWhen": null,
+    "technical": false
   },
   {
     "_class": "org.qubership.atp.macros.core.model.Macros",
@@ -170,7 +174,8 @@
     "createdBy": null,
     "createdWhen": null,
     "modifiedBy": null,
-    "modifiedWhen": null
+    "modifiedWhen": null,
+    "technical": false
   },
   {
     "_class": "org.qubership.atp.macros.core.model.Macros",
@@ -206,7 +211,8 @@
     "createdBy": null,
     "createdWhen": null,
     "modifiedBy": null,
-    "modifiedWhen": null
+    "modifiedWhen": null,
+    "technical": false
   },
   {
     "_class": "org.qubership.atp.macros.core.model.Macros",
@@ -242,7 +248,8 @@
     "createdBy": null,
     "createdWhen": null,
     "modifiedBy": null,
-    "modifiedWhen": null
+    "modifiedWhen": null,
+    "technical": false
   },
   {
     "_class": "org.qubership.atp.macros.core.model.Macros",
@@ -271,7 +278,8 @@
     "createdBy": null,
     "createdWhen": null,
     "modifiedBy": null,
-    "modifiedWhen": null
+    "modifiedWhen": null,
+    "technical": false
   },
   {
     "_class": "org.qubership.atp.macros.core.model.Macros",
@@ -293,7 +301,8 @@
     "createdBy": null,
     "createdWhen": null,
     "modifiedBy": null,
-    "modifiedWhen": null
+    "modifiedWhen": null,
+    "technical": false
   },
   {
     "_class": "org.qubership.atp.macros.core.model.Macros",
@@ -322,7 +331,8 @@
     "createdBy": null,
     "createdWhen": null,
     "modifiedBy": null,
-    "modifiedWhen": null
+    "modifiedWhen": null,
+    "technical": false
   },
   {
     "_class": "org.qubership.atp.macros.core.model.Macros",
@@ -336,7 +346,8 @@
     "createdBy": null,
     "createdWhen": null,
     "modifiedBy": null,
-    "modifiedWhen": null
+    "modifiedWhen": null,
+    "technical": false
   },
   {
     "_class": "org.qubership.atp.macros.core.model.Macros",
@@ -350,7 +361,8 @@
     "createdBy": null,
     "createdWhen": null,
     "modifiedBy": null,
-    "modifiedWhen": null
+    "modifiedWhen": null,
+    "technical": false
   },
   {
     "_class": "org.qubership.atp.macros.core.model.Macros",
@@ -386,7 +398,8 @@
     "createdBy": null,
     "createdWhen": null,
     "modifiedBy": null,
-    "modifiedWhen": null
+    "modifiedWhen": null,
+    "technical": false
   },
   {
     "_class": "org.qubership.atp.macros.core.model.Macros",
@@ -422,7 +435,8 @@
     "createdBy": null,
     "createdWhen": null,
     "modifiedBy": null,
-    "modifiedWhen": null
+    "modifiedWhen": null,
+    "technical": false
   },
   {
     "_class": "org.qubership.atp.macros.core.model.Macros",
@@ -458,7 +472,8 @@
     "createdBy": null,
     "createdWhen": null,
     "modifiedBy": null,
-    "modifiedWhen": null
+    "modifiedWhen": null,
+    "technical": false
   },
   {
     "_class": "org.qubership.atp.macros.core.model.Macros",
@@ -494,7 +509,8 @@
     "createdBy": null,
     "createdWhen": null,
     "modifiedBy": null,
-    "modifiedWhen": null
+    "modifiedWhen": null,
+    "technical": false
   },
   {
     "_class": "org.qubership.atp.macros.core.model.Macros",
@@ -530,7 +546,8 @@
     "createdBy": null,
     "createdWhen": null,
     "modifiedBy": null,
-    "modifiedWhen": null
+    "modifiedWhen": null,
+    "technical": false
   },
   {
     "_class": "org.qubership.atp.macros.core.model.Macros",
@@ -566,7 +583,8 @@
     "createdBy": null,
     "createdWhen": null,
     "modifiedBy": null,
-    "modifiedWhen": null
+    "modifiedWhen": null,
+    "technical": false
   },
   {
     "_class": "org.qubership.atp.macros.core.model.Macros",
@@ -588,7 +606,8 @@
     "createdBy": null,
     "createdWhen": null,
     "modifiedBy": null,
-    "modifiedWhen": null
+    "modifiedWhen": null,
+    "technical": false
   },
   {
     "_class": "org.qubership.atp.macros.core.model.Macros",
@@ -617,7 +636,8 @@
     "createdBy": null,
     "createdWhen": null,
     "modifiedBy": null,
-    "modifiedWhen": null
+    "modifiedWhen": null,
+    "technical": false
   },
   {
     "_class": "org.qubership.atp.macros.core.model.Macros",
@@ -631,7 +651,8 @@
     "createdBy": null,
     "createdWhen": null,
     "modifiedBy": null,
-    "modifiedWhen": null
+    "modifiedWhen": null,
+    "technical": false
   },
   {
     "_class": "org.qubership.atp.macros.core.model.Macros",
@@ -645,7 +666,8 @@
     "createdBy": null,
     "createdWhen": null,
     "modifiedBy": null,
-    "modifiedWhen": null
+    "modifiedWhen": null,
+    "technical": false
   },
   {
     "_class": "org.qubership.atp.macros.core.model.Macros",
@@ -659,7 +681,8 @@
     "createdBy": null,
     "createdWhen": null,
     "modifiedBy": null,
-    "modifiedWhen": null
+    "modifiedWhen": null,
+    "technical": false
   },
   {
     "_class": "org.qubership.atp.macros.core.model.Macros",
@@ -673,7 +696,8 @@
     "createdBy": null,
     "createdWhen": null,
     "modifiedBy": null,
-    "modifiedWhen": null
+    "modifiedWhen": null,
+    "technical": false
   },
   {
     "_class": "org.qubership.atp.macros.core.model.Macros",
@@ -687,7 +711,8 @@
     "createdBy": null,
     "createdWhen": null,
     "modifiedBy": null,
-    "modifiedWhen": null
+    "modifiedWhen": null,
+    "technical": false
   },
   {
     "_class": "org.qubership.atp.macros.core.model.Macros",
@@ -701,7 +726,8 @@
     "createdBy": null,
     "createdWhen": null,
     "modifiedBy": null,
-    "modifiedWhen": null
+    "modifiedWhen": null,
+    "technical": false
   },
   {
     "_class": "org.qubership.atp.macros.core.model.Macros",
@@ -715,7 +741,8 @@
     "createdBy": null,
     "createdWhen": null,
     "modifiedBy": null,
-    "modifiedWhen": null
+    "modifiedWhen": null,
+    "technical": false
   },
   {
     "_class": "org.qubership.atp.macros.core.model.Macros",
@@ -729,7 +756,8 @@
     "createdBy": null,
     "createdWhen": null,
     "modifiedBy": null,
-    "modifiedWhen": null
+    "modifiedWhen": null,
+    "technical": false
   },
   {
     "_class": "org.qubership.atp.macros.core.model.Macros",
@@ -743,7 +771,8 @@
     "createdBy": null,
     "createdWhen": null,
     "modifiedBy": null,
-    "modifiedWhen": null
+    "modifiedWhen": null,
+    "technical": false
   },
   {
     "_class": "org.qubership.atp.macros.core.model.Macros",
@@ -757,7 +786,8 @@
     "createdBy": null,
     "createdWhen": null,
     "modifiedBy": null,
-    "modifiedWhen": null
+    "modifiedWhen": null,
+    "technical": false
   },
   {
     "_class": "org.qubership.atp.macros.core.model.Macros",
@@ -771,7 +801,8 @@
     "createdBy": null,
     "createdWhen": null,
     "modifiedBy": null,
-    "modifiedWhen": null
+    "modifiedWhen": null,
+    "technical": false
   },
   {
     "_class": "org.qubership.atp.macros.core.model.Macros",
@@ -785,7 +816,8 @@
     "createdBy": null,
     "createdWhen": null,
     "modifiedBy": null,
-    "modifiedWhen": null
+    "modifiedWhen": null,
+    "technical": false
   },
   {
     "_class": "org.qubership.atp.macros.core.model.Macros",
@@ -799,7 +831,8 @@
     "createdBy": null,
     "createdWhen": null,
     "modifiedBy": null,
-    "modifiedWhen": null
+    "modifiedWhen": null,
+    "technical": false
   },
   {
     "_class": "org.qubership.atp.macros.core.model.Macros",
@@ -813,7 +846,8 @@
     "createdBy": null,
     "createdWhen": null,
     "modifiedBy": null,
-    "modifiedWhen": null
+    "modifiedWhen": null,
+    "technical": false
   },
   {
     "_class": "org.qubership.atp.macros.core.model.Macros",
@@ -827,7 +861,8 @@
     "createdBy": null,
     "createdWhen": null,
     "modifiedBy": null,
-    "modifiedWhen": null
+    "modifiedWhen": null,
+    "technical": false
   },
   {
     "_class": "org.qubership.atp.macros.core.model.Macros",
@@ -841,7 +876,8 @@
     "createdBy": null,
     "createdWhen": null,
     "modifiedBy": null,
-    "modifiedWhen": null
+    "modifiedWhen": null,
+    "technical": false
   },
   {
     "_class": "org.qubership.atp.macros.core.model.Macros",
@@ -855,7 +891,8 @@
     "createdBy": null,
     "createdWhen": null,
     "modifiedBy": null,
-    "modifiedWhen": null
+    "modifiedWhen": null,
+    "technical": false
   },
   {
     "_class": "org.qubership.atp.macros.core.model.Macros",
@@ -877,7 +914,8 @@
     "createdBy": null,
     "createdWhen": null,
     "modifiedBy": null,
-    "modifiedWhen": null
+    "modifiedWhen": null,
+    "technical": false
   },
   {
     "_class": "org.qubership.atp.macros.core.model.Macros",
@@ -899,7 +937,8 @@
     "createdBy": null,
     "createdWhen": null,
     "modifiedBy": null,
-    "modifiedWhen": null
+    "modifiedWhen": null,
+    "technical": false
   },
   {
     "_class": "org.qubership.atp.macros.core.model.Macros",
@@ -921,7 +960,8 @@
     "createdBy": null,
     "createdWhen": null,
     "modifiedBy": null,
-    "modifiedWhen": null
+    "modifiedWhen": null,
+    "technical": false
   },
   {
     "_class": "org.qubership.atp.macros.core.model.Macros",
@@ -943,6 +983,7 @@
     "createdBy": null,
     "createdWhen": null,
     "modifiedBy": null,
-    "modifiedWhen": null
+    "modifiedWhen": null,
+    "technical": false
   }
 ]
