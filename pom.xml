@@ -18,7 +18,7 @@
         <google.guava.version>32.0.0-jre</google.guava.version>
         <spring.boot.version>2.7.18</spring.boot.version>
         <spring.cloud.version>2021.0.8</spring.cloud.version>
-        <atp.auth.spring.boot.starter.version>1.2.62-SNAPSHOT</atp.auth.spring.boot.starter.version>
+        <atp.auth.spring.boot.starter.version>1.2.67</atp.auth.spring.boot.starter.version>
         <biz.paluch.logging.version>1.14.1</biz.paluch.logging.version>
         <ch.qos.logback.version>1.2.12</ch.qos.logback.version>
         <org.antlr.version>4.7</org.antlr.version>
@@ -237,7 +237,7 @@
         </dependency>
         <dependency>
             <groupId>org.qubership.atp.auth</groupId>
-            <artifactId>atp-auth-spring-boot-starter</artifactId>
+            <artifactId>atp-auth-models</artifactId>
             <version>${atp.auth.spring.boot.starter.version}</version>
             <exclusions>
                 <exclusion>
