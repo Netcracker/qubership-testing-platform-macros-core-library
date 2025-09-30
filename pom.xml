@@ -18,12 +18,17 @@
         <google.guava.version>32.0.0-jre</google.guava.version>
         <spring.boot.version>2.7.18</spring.boot.version>
         <spring.cloud.version>2021.0.8</spring.cloud.version>
+
         <atp.auth.version>1.2.73</atp.auth.version>
+
         <biz.paluch.logging.version>1.14.1</biz.paluch.logging.version>
         <ch.qos.logback.version>1.2.13</ch.qos.logback.version>
         <org.antlr.version>4.7</org.antlr.version>
         <commons-lang.version>2.6</commons-lang.version>
         <model.mapper.version>2.3.2</model.mapper.version>
+        <tomcat-embed.version>9.0.99</tomcat-embed.version>
+        <undertow.version>2.2.36.Final</undertow.version>
+        <commons-fileupload.version>1.6.0</commons-fileupload.version>
 
         <maven-surefire-plugin.version>2.22.0</maven-surefire-plugin.version>
         <mapstruct.version>1.5.5.Final</mapstruct.version>
@@ -191,6 +196,51 @@
                 <version>${spring.cloud.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>ch.qos.logback</groupId>
+                <artifactId>logback-core</artifactId>
+                <version>${ch.qos.logback.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.tomcat.embed</groupId>
+                <artifactId>tomcat-embed-el</artifactId>
+                <version>${tomcat-embed.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.tomcat.embed</groupId>
+                <artifactId>tomcat-embed-core</artifactId>
+                <version>${tomcat-embed.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.tomcat.embed</groupId>
+                <artifactId>tomcat-embed-websocket</artifactId>
+                <version>${tomcat-embed.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.undertow</groupId>
+                <artifactId>undertow-core</artifactId>
+                <version>${undertow.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.undertow</groupId>
+                <artifactId>undertow-servlet</artifactId>
+                <version>${undertow.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.undertow</groupId>
+                <artifactId>undertow-websockets-jsr</artifactId>
+                <version>${undertow.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>commons-fileupload</groupId>
+                <artifactId>commons-fileupload</artifactId>
+                <version>${commons-fileupload.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.yaml</groupId>
+                <artifactId>snakeyaml</artifactId>
+                <version>2.0</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
