@@ -31,9 +31,9 @@ jobs:
     with:
       java-version: "21"
       additional-mvn-args: ""
-      target-store: "maven-central"
+      target-store: "github"
     secrets:
-      maven-username: ${{ secrets.MAVEN_USER }}
-      maven-token: ${{ secrets.MAVEN_PASSWORD }}
-      gpg-passphrase: ${{ secrets.MAVEN_GPG_PASSPHRASE }}
+      maven-username: ${{ github.ACTOR }}
+      maven-token: ${{ secrets.GITHUB_TOKEN }}
+      gpg-passphrase: ${{ secrets.GPG-PASSPHRASE }}
       gpg-private-key: ${{ secrets.MAVEN_GPG_PRIVATE_KEY }}
