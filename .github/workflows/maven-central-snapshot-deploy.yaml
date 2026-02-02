@@ -25,6 +25,9 @@ permissions:
   contents: read
   packages: write
 
+env:
+  additional-mvn-args: ""
+
 jobs:
   mvn-snapshot-deploy:
     runs-on: ubuntu-latest
