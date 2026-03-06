@@ -1,5 +1,5 @@
 /*
- * # Copyright 2024-2025 NetCracker Technology Corporation
+ * # Copyright 2024-2026 NetCracker Technology Corporation
  * #
  * # Licensed under the Apache License, Version 2.0 (the "License");
  * # you may not use this file except in compliance with the License.
@@ -30,13 +30,13 @@ import javax.script.ScriptEngineManager;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
-import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import org.qubership.atp.macros.core.calculator.ScriptMacrosCalculator;
 import org.qubership.atp.macros.core.exception.MacrosCompilationException;
 import org.qubership.atp.macros.core.model.Macros;
 import org.qubership.atp.macros.core.registry.MacroRegistryImpl;
+
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class ScriptMacrosTest {
 
@@ -142,17 +142,7 @@ public class ScriptMacrosTest {
     public void testMacros_Res_VariableContextMacros_MustReturnSystemParameter() {
         Map<String, Object> testContext = new HashMap<>();
         testContext.put("ENV_ID", UUID.fromString("de22bb29-ddfe-4816-9cdf-2e6ed7c527d8"));
-        HashMap<String, Object> environment = new HashMap<>();
-        HashMap<String, Object> system = new HashMap<>();
-        HashMap<String, Object> system2 = new HashMap<>();
-        HashMap<String, Object> connectionParams = new HashMap<>();
-        connectionParams.put("par1", "some");
-        HashMap<String, Object> connectionParams2 = new HashMap<>();
-        connectionParams2.put("par1", "some2");
-        system.put("conn", connectionParams);
-        system2.put("conn", connectionParams2);
-        environment.put("sys", system);
-        environment.put("sys2", system2);
+        HashMap<String, Object> environment = initEnvironment();
         testContext.put("de22bb29-ddfe-4816-9cdf-2e6ed7c527d8", environment);
         String evaluate = evaluate("#RES_VARIABLE('sys2','conn.par1')", evaluator, testContext);
         Assertions.assertEquals("some2", evaluate);
@@ -162,6 +152,13 @@ public class ScriptMacrosTest {
     public void testMacros_Res_VariableContextMacros_MustReturnSystemParameterWithDotSeparator() {
         Map<String, Object> testContext = new HashMap<>();
         testContext.put("ENV_ID", "envId");
+        HashMap<String, Object> environment = initEnvironment();
+        testContext.put("envId", environment);
+        String evaluate = evaluate("#RES_VARIABLE('sys2','conn.par1')", evaluator, testContext);
+        Assertions.assertEquals("some2", evaluate);
+    }
+
+    private HashMap<String, Object> initEnvironment() {
         HashMap<String, Object> environment = new HashMap<>();
         HashMap<String, Object> system = new HashMap<>();
         HashMap<String, Object> system2 = new HashMap<>();
@@ -173,9 +170,7 @@ public class ScriptMacrosTest {
         system2.put("conn", connectionParams2);
         environment.put("sys", system);
         environment.put("sys2", system2);
-        testContext.put("envId", environment);
-        String evaluate = evaluate("#RES_VARIABLE('sys2','conn.par1')", evaluator, testContext);
-        Assertions.assertEquals("some2", evaluate);
+        return environment;
     }
 
     @Test
