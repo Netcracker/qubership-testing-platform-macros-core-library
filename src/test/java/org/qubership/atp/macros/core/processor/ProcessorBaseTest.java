@@ -27,20 +27,20 @@ import java.util.Spliterators;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 
-import jakarta.annotation.Nonnull;
-import jakarta.annotation.Nullable;
-
 import org.assertj.core.util.Lists;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-
 import org.qubership.atp.macros.core.calculator.MacrosCalculator;
 import org.qubership.atp.macros.core.model.Macros;
 import org.qubership.atp.macros.core.parser.antlr4.MacrosParser;
 import org.qubership.atp.macros.core.registry.MacroRegistry;
 
+import jakarta.annotation.Nonnull;
+import jakarta.annotation.Nullable;
+
 public class ProcessorBaseTest {
-    private static final Set<String> MACROSES = new HashSet<>() {{
+
+    private static final Set<String> MACROS_SET = new HashSet<>() {{
         add("REF_DSL");
         add("SUM");
         add("REF_ALIAS");
@@ -307,7 +307,7 @@ public class ProcessorBaseTest {
         @Nullable
         @Override
         public Macros getMacros(@Nonnull String key) {
-            if (!MACROSES.contains(key)) {
+            if (!MACROS_SET.contains(key)) {
                 return null;
             }
             return macros;

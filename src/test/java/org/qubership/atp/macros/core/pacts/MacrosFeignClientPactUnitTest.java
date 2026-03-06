@@ -145,7 +145,7 @@ public class MacrosFeignClientPactUnitTest {
                 .willRespondWith()
                 .status(200)
                 .headers(headers)
-                .body("\"respons\"");
+                .body("\"response\"");
         return response.toPact();
     }
 

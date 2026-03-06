@@ -21,10 +21,10 @@ import java.io.Serializable;
 import java.util.HashMap;
 import java.util.List;
 
+import org.qubership.atp.macros.core.model.Macros;
+
 import jakarta.annotation.Nonnull;
 import jakarta.annotation.Nullable;
-
-import org.qubership.atp.macros.core.model.Macros;
 import lombok.Data;
 
 @Data
@@ -36,9 +36,9 @@ public class MacroRegistryImpl implements MacroRegistry, Serializable {
     private final HashMap<String, Macros> macros = new HashMap<>();
 
     /**
-     * Contructor.
+     * Constructor.
      *
-     * @param macros the list of macros
+     * @param macros the list of macros.
      */
     public MacroRegistryImpl(@Nonnull List<Macros> macros) {
         for (Macros macro : macros) {
