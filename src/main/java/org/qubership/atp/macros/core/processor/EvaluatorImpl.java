@@ -25,14 +25,14 @@ import org.antlr.v4.runtime.CharStreams;
 import org.antlr.v4.runtime.CodePointCharStream;
 import org.antlr.v4.runtime.CommonTokenStream;
 import org.antlr.v4.runtime.tree.ParseTreeVisitor;
-import org.apache.commons.lang.StringUtils;
-
+import org.apache.commons.lang3.StringUtils;
 import org.qubership.atp.macros.core.calculator.MacrosCalculator;
 import org.qubership.atp.macros.core.exception.ThrowingErrorListener;
 import org.qubership.atp.macros.core.model.Macros;
 import org.qubership.atp.macros.core.parser.antlr4.MacrosLexer;
 import org.qubership.atp.macros.core.parser.antlr4.MacrosParser;
 import org.qubership.atp.macros.core.registry.MacroRegistry;
+
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor

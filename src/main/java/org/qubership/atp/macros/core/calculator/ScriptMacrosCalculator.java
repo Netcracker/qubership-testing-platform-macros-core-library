@@ -33,12 +33,12 @@ import javax.script.ScriptEngineManager;
 import javax.script.ScriptException;
 import javax.script.SimpleScriptContext;
 
-import org.apache.commons.lang.StringUtils;
-
+import org.apache.commons.lang3.StringUtils;
 import org.qubership.atp.macros.core.exception.MacrosCompilationException;
 import org.qubership.atp.macros.core.model.Macros;
 import org.qubership.atp.macros.core.model.MacrosParameter;
 import org.qubership.atp.macros.core.processor.AbstractContext;
+
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
@@ -131,8 +131,7 @@ public class ScriptMacrosCalculator implements MacrosCalculator {
     CompiledScript compile(@Nonnull Macros macros) throws MacrosCompilationException {
         ScriptEngine engine = scriptEngineManager.getEngineByName(macros.getEngine());
         if (engine instanceof Invocable) {
-            CompiledScript compiledScript = compile(engine, macros);
-            return compiledScript;
+            return compile(engine, macros);
         } else {
             throw new MacrosCompilationException(String.format("Engine %s is not invocable", macros.getEngine()));
         }
