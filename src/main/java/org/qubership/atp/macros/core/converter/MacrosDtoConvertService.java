@@ -37,7 +37,8 @@ public class MacrosDtoConvertService {
     }
 
     /**
-     * Get modelMapper for additional configulations
+     * Get modelMapper for additional configurations.
+     *
      * @return modelMapper.
      */
     public ModelMapper getModelMapper() {
@@ -48,8 +49,8 @@ public class MacrosDtoConvertService {
      * Convert t.
      *
      * @param <T>  the type parameter
-     * @param from the from
-     * @param to   the to
+     * @param from the from-object
+     * @param to   the to-Class
      * @return the t
      */
     public <T> T convert(Object from, Class<T> to) {
@@ -60,8 +61,8 @@ public class MacrosDtoConvertService {
      * Convert list to list.
      *
      * @param <T>  the type parameter
-     * @param from the from
-     * @param to   the to
+     * @param from the from-List
+     * @param to   the to-Class
      * @return the set
      */
     public <T> List<T> convertList(List from, Class<T> to) {
@@ -72,11 +73,11 @@ public class MacrosDtoConvertService {
     }
 
     /**
-     * Convert set to list.
+     * Convert Set to list.
      *
      * @param <T>  the type parameter
-     * @param from the from
-     * @param to   the to
+     * @param from the from-Set
+     * @param to   the to-Class
      * @return the set
      */
     public <T> List<T> convertSetToList(Set from, Class<T> to) {

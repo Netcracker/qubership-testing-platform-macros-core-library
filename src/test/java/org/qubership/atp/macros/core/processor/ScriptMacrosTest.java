@@ -22,6 +22,7 @@ import java.nio.file.Files;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import java.util.UUID;
 
 import javax.annotation.Nonnull;
@@ -47,8 +48,12 @@ public class ScriptMacrosTest {
 
     @BeforeEach
     public void fillRegistry() throws IOException {
-        File macros = new File(this.getClass().getClassLoader().getResource("globalMacros.json").getFile());
-        File fakeMacros = new File(this.getClass().getClassLoader().getResource("fakeTestMacros.json").getFile());
+        File macros = new File(
+                Objects.requireNonNull(this.getClass().getClassLoader().getResource("globalMacros.json"))
+                        .getFile());
+        File fakeMacros = new File(
+                Objects.requireNonNull(this.getClass().getClassLoader().getResource("fakeTestMacros.json"))
+                        .getFile());
         String macrosString = new String(Files.readAllBytes(macros.toPath()));
         String fakeMacrosString = new String(Files.readAllBytes(fakeMacros.toPath()));
         List<Macros> macrosList = OBJECT_MAPPER.readValue(macrosString, new TypeReference<List<Macros>>() {
@@ -101,7 +106,7 @@ public class ScriptMacrosTest {
     }
 
     @Test
-    public void testMacros_NotInvocableEngine() throws MacrosCompilationException {
+    public void testMacros_NotInvocableEngine() {
         Assertions.assertThrows(MacrosCompilationException.class, () -> {
             Macros macros = new Macros();
             macros.setEngine("java");
@@ -112,7 +117,7 @@ public class ScriptMacrosTest {
     }
 
     @Test
-    public void testMacros_InvalidMacros() throws MacrosCompilationException {
+    public void testMacros_InvalidMacros() {
         Assertions.assertThrows(MacrosCompilationException.class, () -> {
             Macros macros = new Macros();
             macros.setEngine("javascript");
