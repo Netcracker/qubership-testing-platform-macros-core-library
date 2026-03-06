@@ -15,19 +15,18 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <console.encoding>UTF-8</console.encoding>
         <slf4j.version>1.7.36</slf4j.version>
-        <google.guava.version>32.0.0-jre</google.guava.version>
+        <google.guava.version>32.0.1-jre</google.guava.version>
         <spring.boot.version>2.7.18</spring.boot.version>
         <spring.cloud.version>2021.0.8</spring.cloud.version>
 
-        <atp.auth.version>1.2.75</atp.auth.version>
+        <atp.auth.version>1.2.80</atp.auth.version>
 
         <biz.paluch.logging.version>1.14.1</biz.paluch.logging.version>
         <ch.qos.logback.version>1.2.13</ch.qos.logback.version>
         <org.antlr.version>4.7</org.antlr.version>
-        <commons-lang.version>2.6</commons-lang.version>
         <model.mapper.version>2.3.2</model.mapper.version>
-        <tomcat-embed.version>9.0.99</tomcat-embed.version>
-        <undertow.version>2.2.36.Final</undertow.version>
+        <tomcat-embed.version>9.0.108</tomcat-embed.version>
+        <undertow.version>2.2.39.Final</undertow.version>
         <commons-fileupload.version>1.6.0</commons-fileupload.version>
 
         <maven-surefire-plugin.version>2.22.0</maven-surefire-plugin.version>
@@ -474,7 +473,7 @@
                         <argument>org.qubership.atp.macros.core.parser.antlr4</argument>
                     </arguments>
                     <outputDirectory>
-                        ${project.build.directory}/generated-sources/org/qubership/atp/macros/core/parser/antlr4
+                        ${project.build.directory}/generated-sources/antlr4/src/main/java/org/qubership/atp/macros/core/parser/antlr4
                     </outputDirectory>
                 </configuration>
                 <executions>
