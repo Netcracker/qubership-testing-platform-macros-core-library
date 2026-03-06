@@ -18,9 +18,6 @@ package org.qubership.atp.macros.core.processor;
 
 import java.util.List;
 
-import jakarta.annotation.Nonnull;
-import jakarta.annotation.Nullable;
-
 import org.antlr.v4.runtime.CharStreams;
 import org.antlr.v4.runtime.CodePointCharStream;
 import org.antlr.v4.runtime.CommonTokenStream;
@@ -33,6 +30,8 @@ import org.qubership.atp.macros.core.parser.antlr4.MacrosLexer;
 import org.qubership.atp.macros.core.parser.antlr4.MacrosParser;
 import org.qubership.atp.macros.core.registry.MacroRegistry;
 
+import jakarta.annotation.Nonnull;
+import jakarta.annotation.Nullable;
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor

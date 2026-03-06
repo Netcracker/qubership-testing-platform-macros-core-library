@@ -21,8 +21,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import jakarta.annotation.Nonnull;
-import jakarta.annotation.Nullable;
 import javax.script.Bindings;
 import javax.script.Compilable;
 import javax.script.CompiledScript;
@@ -39,6 +37,8 @@ import org.qubership.atp.macros.core.model.Macros;
 import org.qubership.atp.macros.core.model.MacrosParameter;
 import org.qubership.atp.macros.core.processor.AbstractContext;
 
+import jakarta.annotation.Nonnull;
+import jakarta.annotation.Nullable;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
@@ -50,7 +50,8 @@ public class ScriptMacrosCalculator implements MacrosCalculator {
 
     @Nullable
     @Override
-    public String calculate(@Nonnull Macros macros, @Nullable List<String> arguments,
+    public String calculate(@Nonnull Macros macros,
+                            @Nullable List<String> arguments,
                             @Nonnull AbstractContext context) {
         ScriptEngine engine = scriptEngineManager.getEngineByName(macros.getEngine());
         if (engine instanceof Invocable) {
@@ -96,8 +97,7 @@ public class ScriptMacrosCalculator implements MacrosCalculator {
     }
 
     private @Nonnull
-    CompiledScript compile(@Nonnull ScriptEngine engine, @Nonnull Macros macros)
-            throws MacrosCompilationException {
+    CompiledScript compile(@Nonnull ScriptEngine engine, @Nonnull Macros macros) throws MacrosCompilationException {
         if (engine instanceof Compilable compilable) {
             try {
                 String key = macros.getName();

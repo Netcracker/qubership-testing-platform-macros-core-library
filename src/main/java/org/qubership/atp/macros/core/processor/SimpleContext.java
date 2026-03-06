@@ -19,13 +19,12 @@ package org.qubership.atp.macros.core.processor;
 import java.util.ArrayList;
 import java.util.List;
 
-import jakarta.annotation.Nonnull;
-
 import org.antlr.v4.runtime.tree.ParseTree;
-
 import org.qubership.atp.macros.core.model.Macros;
 import org.qubership.atp.macros.core.parser.antlr4.MacrosParser;
 import org.springframework.util.ObjectUtils;
+
+import jakarta.annotation.Nonnull;
 
 public class SimpleContext extends AbstractContext<SimpleContext> {
 

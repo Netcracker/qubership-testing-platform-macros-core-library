@@ -38,8 +38,7 @@ public class ParserTest {
     private ErrorListener errorListener;
     private MacrosLexer markupLexer;
 
-    public void initParserTest(String fInput,
-                      int tokenType) {
+    public void initParserTest(String fInput, int tokenType) {
         this.fInput = fInput;
         this.tokenType = tokenType;
     }
@@ -65,7 +64,6 @@ public class ParserTest {
                 {"#RAND_UUID()", MacrosLexer.MACROS}
         });
     }
-
 
     @MethodSource("data")
     @ParameterizedTest(name = "{index}: {0} {1}")

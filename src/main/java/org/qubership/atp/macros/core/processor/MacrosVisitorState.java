@@ -16,10 +16,10 @@
 
 package org.qubership.atp.macros.core.processor;
 
-import jakarta.annotation.Nonnull;
-
 import org.qubership.atp.macros.core.model.Macros;
 import org.qubership.atp.macros.core.parser.antlr4.MacrosParser;
+
+import jakarta.annotation.Nonnull;
 
 interface MacrosVisitorState {
     MacrosVisitorState.InMacro IN_MACRO = new MacrosVisitorState.InMacro();
@@ -117,8 +117,8 @@ interface MacrosVisitorState {
         }
 
         /**
-         * Should transfer the contained data into it's parent.
-         * Child will be thrown away. Child is evaluated - content in it's text. Parent may have an
+         * Should transfer the contained data into its parent.
+         * Child will be thrown away. Child is evaluated - content in its text. Parent may have an
          * arguments, which should be reevaluated too. Sample: this.tail.append(parent.args).append(child.text)
          * .append(")");
          * parent.args.clear();

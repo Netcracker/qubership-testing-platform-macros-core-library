@@ -23,6 +23,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import java.util.TimeZone;
 import java.util.UUID;
 
@@ -86,13 +87,15 @@ public class MacrosFeignClientPactUnitTest {
         ResponseEntity<List<MacrosDto>> result =
                 macrosFeignClient.findAllByProject(projectId);
         Assertions.assertEquals(200, result.getStatusCode().value());
-        Assertions.assertTrue(result.getHeaders().get("Content-Type").contains("application/json"));
+        Assertions.assertTrue(Objects.requireNonNull(result.getHeaders().get("Content-Type"))
+                .contains("application/json"));
 
         String evaluateReq = "\"CALC()\"";
         ResponseEntity<String> result2 =
                 macrosFeignClient.evaluate(evaluateReq);
         Assertions.assertEquals(200, result2.getStatusCode().value());
-        Assertions.assertTrue(result2.getHeaders().get("Content-Type").contains("application/json"));
+        Assertions.assertTrue(Objects.requireNonNull(result2.getHeaders().get("Content-Type"))
+                .contains("application/json"));
     }
 
     @Pact(consumer = "atp-macros-core")
@@ -125,6 +128,8 @@ public class MacrosFeignClientPactUnitTest {
                         .stringType("defaultValue")
                         .stringType("description"))
                 .closeObject();
+
+        Assertions.assertNotNull(infoForFindAllByProject);
 
         PactDslResponse response = builder
                 .given("all ok")

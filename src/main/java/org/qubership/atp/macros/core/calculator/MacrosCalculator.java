@@ -18,11 +18,11 @@ package org.qubership.atp.macros.core.calculator;
 
 import java.util.List;
 
-import jakarta.annotation.Nonnull;
-import jakarta.annotation.Nullable;
-
 import org.qubership.atp.macros.core.model.Macros;
 import org.qubership.atp.macros.core.processor.AbstractContext;
+
+import jakarta.annotation.Nonnull;
+import jakarta.annotation.Nullable;
 
 public interface MacrosCalculator {
     String calculate(@Nonnull Macros macros, @Nullable List<String> arguments, @Nonnull AbstractContext context);

@@ -16,12 +16,12 @@
 
 package org.qubership.atp.macros.core.processor;
 
-import jakarta.annotation.Nonnull;
-
 import org.qubership.atp.macros.core.model.Macros;
 import org.qubership.atp.macros.core.parser.antlr4.MacrosBaseVisitor;
 import org.qubership.atp.macros.core.parser.antlr4.MacrosParser;
 import org.qubership.atp.macros.core.registry.MacroRegistry;
+
+import jakarta.annotation.Nonnull;
 
 public class MacrosVisitorImpl<T extends AbstractContext<T>> extends MacrosBaseVisitor<T> {
 

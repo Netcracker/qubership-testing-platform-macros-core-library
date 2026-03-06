@@ -17,6 +17,7 @@
 package org.qubership.atp.macros.core.processor;
 
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
@@ -80,51 +81,51 @@ public class ProcessorBaseTest {
 
     @Test
     public void macroReturnsMacroPart_MacroUnionInsideAnotherMacro_MacroPartEvaluated() {
-        String vlookupMacro = "#REF_DSL(InternationalRateCost.#REF_#REF_THIS(OriginCountry.Zone).#REF_THIS"
+        String lookupMacro = "#REF_DSL(InternationalRateCost.#REF_#REF_THIS(OriginCountry.Zone).#REF_THIS"
                               + "(DestinationCountry.Zone))";
-        validate(vlookupMacro, "end",
-                new EvaluationStep("REF_THIS",  Lists.list("OriginCountry.Zone"), "DSL(Countries.EU.From)"),
-                new EvaluationStep("REF_THIS",  Lists.list("DestinationCountry.Zone"), "#REF_DSL(Countries.EU.To)"),
-                new EvaluationStep("REF_DSL",  Lists.list("Countries.EU.To"), "to"),
-                new EvaluationStep("REF_DSL",  Lists.list("Countries.EU.From"), "from"),
-                new EvaluationStep("REF_DSL",  Lists.list("InternationalRateCost.from.to"), "end"));
+        validate(lookupMacro, "end",
+                new EvaluationStep("REF_THIS", Lists.list("OriginCountry.Zone"), "DSL(Countries.EU.From)"),
+                new EvaluationStep("REF_THIS", Lists.list("DestinationCountry.Zone"), "#REF_DSL(Countries.EU.To)"),
+                new EvaluationStep("REF_DSL", Lists.list("Countries.EU.To"), "to"),
+                new EvaluationStep("REF_DSL", Lists.list("Countries.EU.From"), "from"),
+                new EvaluationStep("REF_DSL", Lists.list("InternationalRateCost.from.to"), "end"));
     }
 
     @Test
     public void macroReturnsAnotherMacro_MacroUnionInsideAnotherMacro_BothAreEvaluated() {
-        String vlookupMacro = "#REF_DSL(InternationalRateCost.#REF_THIS(OriginCountry.Zone).#REF_THIS"
+        String lookupMacro = "#REF_DSL(InternationalRateCost.#REF_THIS(OriginCountry.Zone).#REF_THIS"
                               + "(DestinationCountry.Zone))";
-        validate(vlookupMacro, "end",
-                new EvaluationStep("REF_THIS",  Lists.list("OriginCountry.Zone"), "#REF_DSL(Countries.EU.Any)"),
-                new EvaluationStep("REF_DSL",  Lists.list("Countries.EU.Any"), "from"),
-                new EvaluationStep("REF_THIS",  Lists.list("DestinationCountry.Zone"), "to"),
-                new EvaluationStep("REF_DSL",  Lists.list("InternationalRateCost.from.to"), "end"));
+        validate(lookupMacro, "end",
+                new EvaluationStep("REF_THIS", Lists.list("OriginCountry.Zone"), "#REF_DSL(Countries.EU.Any)"),
+                new EvaluationStep("REF_DSL", Lists.list("Countries.EU.Any"), "from"),
+                new EvaluationStep("REF_THIS", Lists.list("DestinationCountry.Zone"), "to"),
+                new EvaluationStep("REF_DSL", Lists.list("InternationalRateCost.from.to"), "end"));
     }
 
     @Test
     public void macroReturnsAnotherMacro_MacroUnionWithDifferentArgsCountInsideAnotherMacro_BothAreEvaluated() {
-        String vlookupMacro = "#REF_DSL(National Rates.#REF_THIS(Subscription.TariffName).#REF_THIS(UsageType))";
-        validate(vlookupMacro, "0",
-                new EvaluationStep("REF_THIS",  Lists.list("Subscription.TariffName"), "Pro Contact"),
-                new EvaluationStep("REF_THIS",  Lists.list("UsageType"), "SMS"),
-                new EvaluationStep("REF_DSL",  Lists.list("National Rates.Pro Contact.SMS"), "0"));
+        String lookupMacro = "#REF_DSL(National Rates.#REF_THIS(Subscription.TariffName).#REF_THIS(UsageType))";
+        validate(lookupMacro, "0",
+                new EvaluationStep("REF_THIS", Lists.list("Subscription.TariffName"), "Pro Contact"),
+                new EvaluationStep("REF_THIS", Lists.list("UsageType"), "SMS"),
+                new EvaluationStep("REF_DSL", Lists.list("National Rates.Pro Contact.SMS"), "0"));
     }
 
     @Test
     public void macroReturnsAnotherMacro_insideAnotherMacro_AllAreEvaluated() {
-        String vlookupMacro = "#REF_DSL(#REF_THIS(OriginCountry.Zone))";
-        validate(vlookupMacro, "end",
-                new EvaluationStep("REF_THIS",  Lists.list("OriginCountry.Zone"), "#REF_DSL(Countries.EU.Any)"),
-                new EvaluationStep("REF_DSL",  Lists.list("Countries.EU.Any"), "from"),
-                new EvaluationStep("REF_DSL",  Lists.list("from"), "end"));
+        String lookupMacro = "#REF_DSL(#REF_THIS(OriginCountry.Zone))";
+        validate(lookupMacro, "end",
+                new EvaluationStep("REF_THIS", Lists.list("OriginCountry.Zone"), "#REF_DSL(Countries.EU.Any)"),
+                new EvaluationStep("REF_DSL", Lists.list("Countries.EU.Any"), "from"),
+                new EvaluationStep("REF_DSL", Lists.list("from"), "end"));
     }
 
     @Test
     public void macroReturnsAnotherMacro_rootMacro_AllAreEvaluated() {
-        String vlookupMacro = "#REF_THIS(OriginCountry.Zone)";
-        validate(vlookupMacro, "end",
-                new EvaluationStep("REF_THIS",  Lists.list("OriginCountry.Zone"), "#REF_DSL(Countries.EU.Any)"),
-                new EvaluationStep("REF_DSL",  Lists.list("Countries.EU.Any"), "end"));
+        String lookupMacro = "#REF_THIS(OriginCountry.Zone)";
+        validate(lookupMacro, "end",
+                new EvaluationStep("REF_THIS", Lists.list("OriginCountry.Zone"), "#REF_DSL(Countries.EU.Any)"),
+                new EvaluationStep("REF_DSL", Lists.list("Countries.EU.Any"), "end"));
     }
 
     @Test
@@ -134,24 +135,24 @@ public class ProcessorBaseTest {
         String secondMacro = "#REF_DSL(International Voice Rates.#REF_THIS(Subscription.TariffName).#REF_THIS"
                              + "(UsageType).#REF_THIS(DestinationCountry.IntenationalZone))";
         validate(macro, "0.33",
-                new EvaluationStep("REF_THIS",  Lists.list("Account.AccountType"), "B2B"),
-                new EvaluationStep("REF_THIS",  Lists.list("OriginCountry.Zone"), "Belgium"),
-                new EvaluationStep("REF_THIS",  Lists.list("DestinationCountry.Zone"), "Magreb"),
-                new EvaluationStep("REF_DSL",  Lists.list("Roaming SMS Rates.B2B.Belgium.Magreb"), secondMacro),
-                new EvaluationStep("REF_THIS",  Lists.list("Subscription.TariffName"), "Pro Contact"),
-                new EvaluationStep("REF_THIS",  Lists.list("UsageType"), "SMS"),
-                new EvaluationStep("REF_THIS",  Lists.list("DestinationCountry.IntenationalZone"), "World 2"),
-                new EvaluationStep("REF_DSL",  Lists.list("International Voice Rates.Pro Contact.SMS.World 2"), "0.33"));
+                new EvaluationStep("REF_THIS", Lists.list("Account.AccountType"), "B2B"),
+                new EvaluationStep("REF_THIS", Lists.list("OriginCountry.Zone"), "Belgium"),
+                new EvaluationStep("REF_THIS", Lists.list("DestinationCountry.Zone"), "Magreb"),
+                new EvaluationStep("REF_DSL", Lists.list("Roaming SMS Rates.B2B.Belgium.Magreb"), secondMacro),
+                new EvaluationStep("REF_THIS", Lists.list("Subscription.TariffName"), "Pro Contact"),
+                new EvaluationStep("REF_THIS", Lists.list("UsageType"), "SMS"),
+                new EvaluationStep("REF_THIS", Lists.list("DestinationCountry.IntenationalZone"), "World 2"),
+                new EvaluationStep("REF_DSL", Lists.list("International Voice Rates.Pro Contact.SMS.World 2"), "0.33"));
     }
 
     @Test
     public void macroUnion_InsideAnotherMacro_ThreeEvaluationStepsOccurred() {
-        String vlookupMacro = "#REF_DSL(InternationalRateCost.#REF_THIS(OriginCountry.Zone).#REF_THIS"
+        String lookupMacro = "#REF_DSL(InternationalRateCost.#REF_THIS(OriginCountry.Zone).#REF_THIS"
                               + "(DestinationCountry.Zone))";
-        validate(vlookupMacro, "end",
-                new EvaluationStep("REF_THIS",  Lists.list("OriginCountry.Zone"), "1"),
-                new EvaluationStep("REF_THIS",  Lists.list("DestinationCountry.Zone"), "2"),
-                new EvaluationStep("REF_DSL",  Lists.list("InternationalRateCost.1.2"), "end"));
+        validate(lookupMacro, "end",
+                new EvaluationStep("REF_THIS", Lists.list("OriginCountry.Zone"), "1"),
+                new EvaluationStep("REF_THIS", Lists.list("DestinationCountry.Zone"), "2"),
+                new EvaluationStep("REF_DSL", Lists.list("InternationalRateCost.1.2"), "end"));
     }
 
     @Test
@@ -161,7 +162,7 @@ public class ProcessorBaseTest {
     }
 
     @Test
-    public void singleMacro_MacroBetweenTextParts_OneEvaluationStepsOccurred() throws Exception {
+    public void singleMacro_MacroBetweenTextParts_OneEvaluationStepsOccurred() {
         String macro = "#just_a text#REF_DSL(1.2.3)#";
         validate(macro, "#just_a text #",
                 new EvaluationStep("REF_DSL", Lists.list("1.2.3"), " "));
@@ -249,14 +250,14 @@ public class ProcessorBaseTest {
     public void singleMacroJustEmpty_MacroBetweenTextParts_OneEvaluationStepsOccurred() {
         String macro = "Bla Bla $UUID()";
         validate(macro, "Bla Bla asb",
-                new EvaluationStep("UUID", Lists.emptyList(), "asb"));
+                new EvaluationStep("UUID", Collections.emptyList(), "asb"));
     }
 
     @Test
     public void singleMacroJustEmptyQuotes_MacroBetweenTextParts_OneEvaluationStepsOccurred() {
         String macro = "Bla Bla #UUID('')";
         validate(macro, "Bla Bla asb",
-                new EvaluationStep("UUID", Lists.emptyList(), "asb"));
+                new EvaluationStep("UUID", Collections.emptyList(), "asb"));
     }
 
     @Test
@@ -380,10 +381,9 @@ public class ProcessorBaseTest {
             if (this == o) {
                 return true;
             }
-            if (!(o instanceof EvaluationStep)) {
+            if (!(o instanceof EvaluationStep that)) {
                 return false;
             }
-            EvaluationStep that = (EvaluationStep) o;
             return Objects.equals(macroName, that.macroName) &&
                    Objects.equals(macroArgs, that.macroArgs) &&
                    Objects.equals(result, that.result);

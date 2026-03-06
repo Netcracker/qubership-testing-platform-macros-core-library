@@ -16,10 +16,10 @@
 
 package org.qubership.atp.macros.core.registry;
 
+import org.qubership.atp.macros.core.model.Macros;
+
 import jakarta.annotation.Nonnull;
 import jakarta.annotation.Nullable;
-
-import org.qubership.atp.macros.core.model.Macros;
 
 public interface MacroRegistry {
 

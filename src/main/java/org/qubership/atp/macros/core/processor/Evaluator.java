@@ -18,10 +18,10 @@ package org.qubership.atp.macros.core.processor;
 
 import java.util.List;
 
+import org.qubership.atp.macros.core.model.Macros;
+
 import jakarta.annotation.Nonnull;
 import jakarta.annotation.Nullable;
-
-import org.qubership.atp.macros.core.model.Macros;
 
 public interface Evaluator {
 
