@@ -1,5 +1,5 @@
 /*
- * # Copyright 2024-2025 NetCracker Technology Corporation
+ * # Copyright 2024-2026 NetCracker Technology Corporation
  * #
  * # Licensed under the Apache License, Version 2.0 (the "License");
  * # you may not use this file except in compliance with the License.
@@ -19,13 +19,13 @@ package org.qubership.atp.macros.core.processor;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.annotation.Nonnull;
+import jakarta.annotation.Nonnull;
 
 import org.antlr.v4.runtime.tree.ParseTree;
-import org.springframework.util.StringUtils;
 
 import org.qubership.atp.macros.core.model.Macros;
 import org.qubership.atp.macros.core.parser.antlr4.MacrosParser;
+import org.springframework.util.ObjectUtils;
 
 public class SimpleContext extends AbstractContext<SimpleContext> {
 
@@ -92,7 +92,7 @@ public class SimpleContext extends AbstractContext<SimpleContext> {
 
     protected void pushArguments(MacrosParser.MacroParamContext arg) {
         String result = getArgument(arg.macroArg());
-        if (!StringUtils.isEmpty(result)) {
+        if (!ObjectUtils.isEmpty(result)) {
             this.args.add(evaluator.evaluate(result, createRootContext()));
         }
     }

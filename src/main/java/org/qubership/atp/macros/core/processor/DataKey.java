@@ -1,5 +1,5 @@
 /*
- * # Copyright 2024-2025 NetCracker Technology Corporation
+ * # Copyright 2024-2026 NetCracker Technology Corporation
  * #
  * # Licensed under the Apache License, Version 2.0 (the "License");
  * # you may not use this file except in compliance with the License.
@@ -20,13 +20,13 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
+import jakarta.annotation.Nonnull;
+import jakarta.annotation.Nullable;
 
 import com.google.common.base.Preconditions;
 
 public class DataKey<T> {
-    private static final Map<String, DataKey> ourDataKeyIndex = new HashMap<String, DataKey>();
+    private static final Map<String, DataKey> ourDataKeyIndex = new HashMap<>();
 
     private final String myName;
 

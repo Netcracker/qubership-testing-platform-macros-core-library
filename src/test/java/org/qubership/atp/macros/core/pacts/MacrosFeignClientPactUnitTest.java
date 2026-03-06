@@ -1,5 +1,5 @@
 /*
- * # Copyright 2024-2025 NetCracker Technology Corporation
+ * # Copyright 2024-2026 NetCracker Technology Corporation
  * #
  * # Licensed under the Apache License, Version 2.0 (the "License");
  * # you may not use this file except in compliance with the License.
@@ -27,44 +27,49 @@ import java.util.TimeZone;
 import java.util.UUID;
 
 import org.apache.commons.lang3.time.FastDateFormat;
-import org.junit.Assert;
-import org.junit.Rule;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.qubership.atp.auth.springbootstarter.config.FeignConfiguration;
 import org.qubership.atp.macros.core.clients.api.dto.macros.MacrosDto;
 import org.qubership.atp.macros.core.client.MacrosFeignClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.http.HttpMessageConvertersAutoConfiguration;
 import org.springframework.boot.autoconfigure.jackson.JacksonAutoConfiguration;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.cloud.openfeign.FeignAutoConfiguration;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
 import org.springframework.http.ResponseEntity;
-import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.TestPropertySource;
-import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
+import org.springframework.test.context.junit.jupiter.SpringJUnitConfig;
 
 import au.com.dius.pact.consumer.dsl.DslPart;
 import au.com.dius.pact.consumer.dsl.PactDslJsonArray;
 import au.com.dius.pact.consumer.dsl.PactDslJsonBody;
 import au.com.dius.pact.consumer.dsl.PactDslResponse;
 import au.com.dius.pact.consumer.dsl.PactDslWithProvider;
-import au.com.dius.pact.consumer.junit.PactProviderRule;
-import au.com.dius.pact.consumer.junit.PactVerification;
+import au.com.dius.pact.consumer.junit5.PactConsumerTestExt;
+import au.com.dius.pact.consumer.junit5.PactTestFor;
+import au.com.dius.pact.core.model.PactSpecVersion;
 import au.com.dius.pact.core.model.RequestResponsePact;
 import au.com.dius.pact.core.model.annotations.Pact;
 import au.com.dius.pact.core.model.matchingrules.DateMatcher;
 
-@RunWith(SpringRunner.class)
 @EnableFeignClients(clients = {MacrosFeignClient.class})
-@ContextConfiguration(classes = {MacrosFeignClientPactUnitTest.TestApp.class})
+@ExtendWith({SpringExtension.class, PactConsumerTestExt.class})
+@SpringBootTest
+@ActiveProfiles("disable-security")
+@SpringJUnitConfig(classes = {MacrosFeignClientPactUnitTest.TestApp.class})
 @Import({JacksonAutoConfiguration.class, HttpMessageConvertersAutoConfiguration.class, FeignConfiguration.class,
         FeignAutoConfiguration.class})
 @TestPropertySource(
         properties = {"feign.atp.macros.name=atp-macros", "feign.atp.macros.route=",
                 "feign.atp.macros.url=http://localhost:8888", "feign.httpclient.enabled=false"})
+@PactTestFor(providerName = "atp-macros", port = "8888", pactVersion = PactSpecVersion.V3)
 public class MacrosFeignClientPactUnitTest {
 
     @Configuration
@@ -74,26 +79,20 @@ public class MacrosFeignClientPactUnitTest {
     @Autowired
     MacrosFeignClient macrosFeignClient;
 
-    @Rule
-    public PactProviderRule mockProvider = new PactProviderRule("atp-macros", "localhost", 8888, this);
-
     @Test
-    @PactVerification()
+    @PactTestFor(pactMethod = "createPact")
     public void allPass() {
-
         UUID projectId = UUID.fromString("7c9dafe9-2cd1-4ffc-ae54-45867f2b9771");
         ResponseEntity<List<MacrosDto>> result =
                 macrosFeignClient.findAllByProject(projectId);
-        Assert.assertEquals(result.getStatusCode().value(), 200);
-        Assert.assertTrue(result.getHeaders().get("Content-Type").contains("application/json"));
+        Assertions.assertEquals(200, result.getStatusCode().value());
+        Assertions.assertTrue(result.getHeaders().get("Content-Type").contains("application/json"));
 
         String evaluateReq = "\"CALC()\"";
         ResponseEntity<String> result2 =
                 macrosFeignClient.evaluate(evaluateReq);
-        Assert.assertEquals(result2.getStatusCode().value(), 200);
-        Assert.assertTrue(result2.getHeaders().get("Content-Type").contains("application/json"));
-
-
+        Assertions.assertEquals(200, result2.getStatusCode().value());
+        Assertions.assertTrue(result2.getHeaders().get("Content-Type").contains("application/json"));
     }
 
     @Pact(consumer = "atp-macros-core")
@@ -102,7 +101,6 @@ public class MacrosFeignClientPactUnitTest {
         headers.put("Content-Type", "application/json");
 
         FastDateFormat dateFormat = FastDateFormat.getInstance(ISO_DATE_TIME_1, TimeZone.getDefault());
-
 
         DslPart infoForFindAllByProject = PactDslJsonArray.arrayEachLike()
                 .uuid("uuid")
@@ -128,7 +126,6 @@ public class MacrosFeignClientPactUnitTest {
                         .stringType("description"))
                 .closeObject();
 
-
         PactDslResponse response = builder
                 .given("all ok")
 
@@ -147,7 +144,7 @@ public class MacrosFeignClientPactUnitTest {
                 .body("\"CALC()\"")
                 .willRespondWith()
                 .status(200)
-               .headers(headers)
+                .headers(headers)
                 .body("\"respons\"");
         return response.toPact();
     }

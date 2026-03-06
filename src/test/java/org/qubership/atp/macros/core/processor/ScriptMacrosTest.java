@@ -25,7 +25,7 @@ import java.util.Map;
 import java.util.Objects;
 import java.util.UUID;
 
-import javax.annotation.Nonnull;
+import jakarta.annotation.Nonnull;
 import javax.script.ScriptEngineManager;
 
 import org.junit.jupiter.api.Assertions;
@@ -56,9 +56,9 @@ public class ScriptMacrosTest {
                         .getFile());
         String macrosString = new String(Files.readAllBytes(macros.toPath()));
         String fakeMacrosString = new String(Files.readAllBytes(fakeMacros.toPath()));
-        List<Macros> macrosList = OBJECT_MAPPER.readValue(macrosString, new TypeReference<List<Macros>>() {
+        List<Macros> macrosList = OBJECT_MAPPER.readValue(macrosString, new TypeReference<>() {
         });
-        List<Macros> fakeMacrosList = OBJECT_MAPPER.readValue(fakeMacrosString, new TypeReference<List<Macros>>() {
+        List<Macros> fakeMacrosList = OBJECT_MAPPER.readValue(fakeMacrosString, new TypeReference<>() {
         });
         macrosList.addAll(fakeMacrosList);
         calculator = new ScriptMacrosCalculator(new ScriptEngineManager());

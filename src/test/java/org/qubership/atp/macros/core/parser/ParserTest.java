@@ -1,5 +1,5 @@
 /*
- * # Copyright 2024-2025 NetCracker Technology Corporation
+ * # Copyright 2024-2026 NetCracker Technology Corporation
  * #
  * # Licensed under the Apache License, Version 2.0 (the "License");
  * # you may not use this file except in compliance with the License.
@@ -16,7 +16,7 @@
 
 package org.qubership.atp.macros.core.parser;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.io.StringWriter;
 import java.util.Arrays;
@@ -25,29 +25,25 @@ import java.util.Collection;
 import org.antlr.v4.runtime.ANTLRInputStream;
 import org.antlr.v4.runtime.CommonTokenStream;
 import org.antlr.v4.runtime.TokenStream;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.junit.runners.Parameterized;
-
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.MethodSource;
 import org.qubership.atp.macros.core.parser.antlr4.MacrosBaseVisitor;
 import org.qubership.atp.macros.core.parser.antlr4.MacrosLexer;
 import org.qubership.atp.macros.core.parser.antlr4.MacrosParser;
 import org.qubership.atp.macros.core.parser.antlr4.MacrosVisitor;
 
-@RunWith(Parameterized.class)
 public class ParserTest {
-    private final String fInput;
-    private final int tokenType;
+    private String fInput;
+    private int tokenType;
     private ErrorListener errorListener;
     private MacrosLexer markupLexer;
 
-    public ParserTest(String fInput,
+    public void initParserTest(String fInput,
                       int tokenType) {
         this.fInput = fInput;
         this.tokenType = tokenType;
     }
 
-    @Parameterized.Parameters(name = "{index}: {0} {1}")
     public static Collection<Object[]> data() {
         return Arrays.asList(new Object[][] {
                 {"anything in here", MacrosLexer.TEXT},
@@ -71,8 +67,10 @@ public class ParserTest {
     }
 
 
-    @Test
-    public void testText() {
+    @MethodSource("data")
+    @ParameterizedTest(name = "{index}: {0} {1}")
+    public void testText(String fInput, int tokenType) {
+        initParserTest(fInput, tokenType);
         MacrosParser parser = setup(fInput);
         TokenStream ts = parser.getTokenStream();
         assertEquals("", this.errorListener.getSymbol());

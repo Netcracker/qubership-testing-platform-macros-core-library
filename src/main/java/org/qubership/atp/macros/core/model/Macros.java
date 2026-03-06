@@ -1,5 +1,5 @@
 /*
- * # Copyright 2024-2025 NetCracker Technology Corporation
+ * # Copyright 2024-2026 NetCracker Technology Corporation
  * #
  * # Licensed under the Apache License, Version 2.0 (the "License");
  * # you may not use this file except in compliance with the License.
@@ -16,11 +16,12 @@
 
 package org.qubership.atp.macros.core.model;
 
+import java.io.Serial;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
-import javax.annotation.Nonnull;
+import jakarta.annotation.Nonnull;
 
 import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -33,6 +34,7 @@ import lombok.Data;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Macros extends AbstractEntity {
 
+    @Serial
     private static final long serialVersionUID = -8448338543183169090L;
 
     private static final String UNKNOWN_PROJECT_UUID = "38400000-8cf0-11bd-b23e-10b96e4ef00d";

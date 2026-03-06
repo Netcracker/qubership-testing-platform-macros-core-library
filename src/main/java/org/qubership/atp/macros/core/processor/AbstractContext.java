@@ -1,5 +1,5 @@
 /*
- * # Copyright 2024-2025 NetCracker Technology Corporation
+ * # Copyright 2024-2026 NetCracker Technology Corporation
  * #
  * # Licensed under the Apache License, Version 2.0 (the "License");
  * # you may not use this file except in compliance with the License.
@@ -19,8 +19,8 @@ package org.qubership.atp.macros.core.processor;
 import java.util.IdentityHashMap;
 import java.util.Map;
 
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
+import jakarta.annotation.Nonnull;
+import jakarta.annotation.Nullable;
 
 import org.qubership.atp.macros.core.model.Macros;
 import org.qubership.atp.macros.core.parser.antlr4.MacrosParser;

@@ -1,5 +1,5 @@
 /*
- * # Copyright 2024-2025 NetCracker Technology Corporation
+ * # Copyright 2024-2026 NetCracker Technology Corporation
  * #
  * # Licensed under the Apache License, Version 2.0 (the "License");
  * # you may not use this file except in compliance with the License.
@@ -27,8 +27,8 @@ import java.util.Spliterators;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
+import jakarta.annotation.Nonnull;
+import jakarta.annotation.Nullable;
 
 import org.assertj.core.util.Lists;
 import org.junit.jupiter.api.Assertions;
@@ -40,7 +40,7 @@ import org.qubership.atp.macros.core.parser.antlr4.MacrosParser;
 import org.qubership.atp.macros.core.registry.MacroRegistry;
 
 public class ProcessorBaseTest {
-    private static final Set<String> MACROSES = new HashSet<String>() {{
+    private static final Set<String> MACROSES = new HashSet<>() {{
         add("REF_DSL");
         add("SUM");
         add("REF_ALIAS");
@@ -79,7 +79,7 @@ public class ProcessorBaseTest {
     }
 
     @Test
-    public void macroReturnsMacroPart_MacroUnionInsideAnotherMacro_MacroPartEvaluated() throws Exception {
+    public void macroReturnsMacroPart_MacroUnionInsideAnotherMacro_MacroPartEvaluated() {
         String vlookupMacro = "#REF_DSL(InternationalRateCost.#REF_#REF_THIS(OriginCountry.Zone).#REF_THIS"
                               + "(DestinationCountry.Zone))";
         validate(vlookupMacro, "end",
@@ -91,7 +91,7 @@ public class ProcessorBaseTest {
     }
 
     @Test
-    public void macroReturnsAnotherMacro_MacroUnionInsideAnotherMacro_BothAreEvaluated() throws Exception {
+    public void macroReturnsAnotherMacro_MacroUnionInsideAnotherMacro_BothAreEvaluated() {
         String vlookupMacro = "#REF_DSL(InternationalRateCost.#REF_THIS(OriginCountry.Zone).#REF_THIS"
                               + "(DestinationCountry.Zone))";
         validate(vlookupMacro, "end",
@@ -102,7 +102,7 @@ public class ProcessorBaseTest {
     }
 
     @Test
-    public void macroReturnsAnotherMacro_MacroUnionWithDifferentArgsCountInsideAnotherMacro_BothAreEvaluated() throws Exception {
+    public void macroReturnsAnotherMacro_MacroUnionWithDifferentArgsCountInsideAnotherMacro_BothAreEvaluated() {
         String vlookupMacro = "#REF_DSL(National Rates.#REF_THIS(Subscription.TariffName).#REF_THIS(UsageType))";
         validate(vlookupMacro, "0",
                 new EvaluationStep("REF_THIS",  Lists.list("Subscription.TariffName"), "Pro Contact"),
@@ -111,7 +111,7 @@ public class ProcessorBaseTest {
     }
 
     @Test
-    public void macroReturnsAnotherMacro_insideAnotherMacro_AllAreEvaluated() throws Exception {
+    public void macroReturnsAnotherMacro_insideAnotherMacro_AllAreEvaluated() {
         String vlookupMacro = "#REF_DSL(#REF_THIS(OriginCountry.Zone))";
         validate(vlookupMacro, "end",
                 new EvaluationStep("REF_THIS",  Lists.list("OriginCountry.Zone"), "#REF_DSL(Countries.EU.Any)"),
@@ -120,7 +120,7 @@ public class ProcessorBaseTest {
     }
 
     @Test
-    public void macroReturnsAnotherMacro_rootMacro_AllAreEvaluated() throws Exception {
+    public void macroReturnsAnotherMacro_rootMacro_AllAreEvaluated() {
         String vlookupMacro = "#REF_THIS(OriginCountry.Zone)";
         validate(vlookupMacro, "end",
                 new EvaluationStep("REF_THIS",  Lists.list("OriginCountry.Zone"), "#REF_DSL(Countries.EU.Any)"),
@@ -128,7 +128,7 @@ public class ProcessorBaseTest {
     }
 
     @Test
-    public void macroReturnsAnotherMacro_complexRootMacro_AllAreEvaluated() throws Exception {
+    public void macroReturnsAnotherMacro_complexRootMacro_AllAreEvaluated() {
         String macro = "#REF_DSL(Roaming SMS Rates.#REF_THIS(Account.AccountType).#REF_THIS(OriginCountry.Zone)"
                        + ".#REF_THIS(DestinationCountry.Zone))";
         String secondMacro = "#REF_DSL(International Voice Rates.#REF_THIS(Subscription.TariffName).#REF_THIS"
@@ -145,7 +145,7 @@ public class ProcessorBaseTest {
     }
 
     @Test
-    public void macroUnion_InsideAnotherMacro_ThreeEvaluationStepsOccurred() throws Exception {
+    public void macroUnion_InsideAnotherMacro_ThreeEvaluationStepsOccurred() {
         String vlookupMacro = "#REF_DSL(InternationalRateCost.#REF_THIS(OriginCountry.Zone).#REF_THIS"
                               + "(DestinationCountry.Zone))";
         validate(vlookupMacro, "end",
@@ -155,7 +155,7 @@ public class ProcessorBaseTest {
     }
 
     @Test
-    public void noMacro_textWithSpecialSymbols_NoEvaluationStepsOccurred() throws Exception {
+    public void noMacro_textWithSpecialSymbols_NoEvaluationStepsOccurred() {
         String macro = "#just_a text #";
         validate(macro, macro);
     }
@@ -168,32 +168,32 @@ public class ProcessorBaseTest {
     }
 
     @Test
-    public void noMacro_ParameterNameWithBrackets_MacroBetweenTextParts_OneEvaluationStepsOccurred() throws Exception {
+    public void noMacro_ParameterNameWithBrackets_MacroBetweenTextParts_OneEvaluationStepsOccurred() {
         String macro = "Click the UIElement (\"Button\"='Submit')";
         validate(macro, "Click the UIElement (\"Button\"='Submit')");
     }
 
     @Test
-    public void singleMacros_ParameterNameWithBrackets_MacroBetweenTextParts_OneEvaluationStepsOccurred() throws Exception {
+    public void singleMacros_ParameterNameWithBrackets_MacroBetweenTextParts_OneEvaluationStepsOccurred() {
         String macro = "Click the UIElement (\"Button\"='Submit')#REF_DSL(1.2.3)#";
         validate(macro, "Click the UIElement (\"Button\"='Submit')test#",
                 new EvaluationStep("REF_DSL", Lists.list("1.2.3"), "test"));
     }
 
     @Test
-    public void noMacro_ParameterNameWithVariable_MacroBetweenTextParts_OneEvaluationStepsOccurred() throws Exception {
+    public void noMacro_ParameterNameWithVariable_MacroBetweenTextParts_OneEvaluationStepsOccurred() {
         String macro = "Fill the following parameters: (\"Market\"='${Country market}')";
         validate(macro, "Fill the following parameters: (\"Market\"='${Country market}')");
     }
 
     @Test
-    public void noMacro_Regex_MacroBetweenTextParts_OneEvaluationStepsOccurred() throws Exception {
+    public void noMacro_Regex_MacroBetweenTextParts_OneEvaluationStepsOccurred() {
         String macro = "(.//*[contains(@class, 'consent-text')])[last()]";
         validate(macro, "(.//*[contains(@class, 'consent-text')])[last()]");
     }
 
     @Test
-    public void noMacro_SqlSimple_MacroBetweenTextParts_OneEvaluationStepsOccurred() throws Exception {
+    public void noMacro_SqlSimple_MacroBetweenTextParts_OneEvaluationStepsOccurred() {
         String macro = "some(o.object_id=r7.object_id and r7.attr_id=9147412578213883528 /* "
                        + "Serviceability Data */ and r7.reference=9153651356313208758 /* Magyar Telekom xPON 150 (60))";
         validate(macro, "some(o.object_id=r7.object_id and r7.attr_id=9147412578213883528 /* "
@@ -202,13 +202,13 @@ public class ProcessorBaseTest {
     }
 
     @Test
-    public void noMacro1_SqlSimple_MacroBetweenTextParts_OneEvaluationStepsOccurred() throws Exception {
+    public void noMacro1_SqlSimple_MacroBetweenTextParts_OneEvaluationStepsOccurred() {
         String macro = "some(asfdsfds)";
         validate(macro, "some(asfdsfds)");
     }
 
     @Test
-    public void noMacro_SqlDifficult_MacroBetweenTextParts_OneEvaluationStepsOccurred() throws Exception {
+    public void noMacro_SqlDifficult_MacroBetweenTextParts_OneEvaluationStepsOccurred() {
         String macro = "Store SQL \"select o.object_id from nc_objects o join nc_addresses a on a.id=o.object_id join"
                        + " nc_references r7 on (o.object_id=r7.object_id and r7.attr_id=9147412578213883528 /* "
                        + "Serviceability Data */ and r7.reference=9153651356313208758 /* Magyar Telekom xPON 150 (60)"
@@ -246,21 +246,21 @@ public class ProcessorBaseTest {
     }
 
     @Test
-    public void singleMacroJustEmpty_MacroBetweenTextParts_OneEvaluationStepsOccurred() throws Exception {
+    public void singleMacroJustEmpty_MacroBetweenTextParts_OneEvaluationStepsOccurred() {
         String macro = "Bla Bla $UUID()";
         validate(macro, "Bla Bla asb",
                 new EvaluationStep("UUID", Lists.emptyList(), "asb"));
     }
 
     @Test
-    public void singleMacroJustEmptyQuotes_MacroBetweenTextParts_OneEvaluationStepsOccurred() throws Exception {
+    public void singleMacroJustEmptyQuotes_MacroBetweenTextParts_OneEvaluationStepsOccurred() {
         String macro = "Bla Bla #UUID('')";
         validate(macro, "Bla Bla asb",
                 new EvaluationStep("UUID", Lists.emptyList(), "asb"));
     }
 
     @Test
-    public void macrosWithQuotesAndSubMacros_SubMacrosAsFirstParam_TwoEvaluationStepsOccurred() throws Exception {
+    public void macrosWithQuotesAndSubMacros_SubMacrosAsFirstParam_TwoEvaluationStepsOccurred() {
         String macro = "Bla Bla #UUID('#UUID('a','b')','c')";
         validate(macro, "Bla Bla passed",
                 new EvaluationStep("UUID", Lists.list("a", "b"), "d"),
@@ -268,7 +268,7 @@ public class ProcessorBaseTest {
     }
 
     @Test
-    public void macrosWithQuotesAndSubMacros_SubMacrosAsSecondParam_TwoEvaluationStepsOccurred() throws Exception {
+    public void macrosWithQuotesAndSubMacros_SubMacrosAsSecondParam_TwoEvaluationStepsOccurred() {
         String macro = "Bla Bla #UUID('a','#UUID('b','c')')";
         validate(macro, "Bla Bla passed",
                 new EvaluationStep("UUID", Lists.list("b", "c"), "d"),
@@ -276,7 +276,7 @@ public class ProcessorBaseTest {
     }
 
     @Test
-    public void macrosWithQuotesAndSubMacros_SubMacrosWithQuotesInParam_TwoEvaluationStepsOccurred() throws Exception {
+    public void macrosWithQuotesAndSubMacros_SubMacrosWithQuotesInParam_TwoEvaluationStepsOccurred() {
         String macro = "#GET_MONTH('2019-01-25T12:01:41.515Z', 'yyyy-MM-dd\\'T\\'HH:mm:ss.SSS\\'Z\\'')";
         validate(macro, "passed",
                 new EvaluationStep("GET_MONTH", Lists.list("2019-01-25T12:01:41.515Z", "yyyy-MM-dd\\'T\\'HH:mm:ss"
@@ -288,14 +288,14 @@ public class ProcessorBaseTest {
     }
 
     @Test
-    public void threeMacroParams_MacroBetweenTextParts_OneEvaluationStepsOccurred() throws Exception {
+    public void threeMacroParams_MacroBetweenTextParts_OneEvaluationStepsOccurred() {
         String macro = "$UUID('1','abs', 'three')";
         validate(macro, "asb",
                 new EvaluationStep("UUID", Lists.list("1", "abs", "three"), "asb"));
     }
 
     @Test
-    public void singleMacroParams_MacroBetweenTextParts_OneEvaluationStepsOccurred() throws Exception {
+    public void singleMacroParams_MacroBetweenTextParts_OneEvaluationStepsOccurred() {
         String macro = "$UUID('1','abs')";
         validate(macro, "asb",
                 new EvaluationStep("UUID", Lists.list("1", "abs"), "asb"));

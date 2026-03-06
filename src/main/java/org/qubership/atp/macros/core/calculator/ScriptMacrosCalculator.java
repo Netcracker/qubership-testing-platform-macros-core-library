@@ -1,5 +1,5 @@
 /*
- * # Copyright 2024-2025 NetCracker Technology Corporation
+ * # Copyright 2024-2026 NetCracker Technology Corporation
  * #
  * # Licensed under the Apache License, Version 2.0 (the "License");
  * # you may not use this file except in compliance with the License.
@@ -21,8 +21,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
+import jakarta.annotation.Nonnull;
+import jakarta.annotation.Nullable;
 import javax.script.Bindings;
 import javax.script.Compilable;
 import javax.script.CompiledScript;
@@ -68,7 +68,7 @@ public class ScriptMacrosCalculator implements MacrosCalculator {
                 return ((Invocable) compiledScript.getEngine()).invokeMethod(
                         bindings, "main", compiledArguments.toArray()).toString();
             } catch (MacrosCompilationException | NoSuchMethodException | ScriptException e) {
-                final String message = String.format("Error during evaluation of %s macros: %s", macros.getName(),
+                final String message = "Error during evaluation of %s macros: %s".formatted(macros.getName(),
                         e.getMessage());
                 log.error(message, e);
                 return message;
@@ -98,23 +98,23 @@ public class ScriptMacrosCalculator implements MacrosCalculator {
     private @Nonnull
     CompiledScript compile(@Nonnull ScriptEngine engine, @Nonnull Macros macros)
             throws MacrosCompilationException {
-        if (engine instanceof Compilable) {
+        if (engine instanceof Compilable compilable) {
             try {
                 String key = macros.getName();
                 if (compiledScripts.containsKey(key)) {
                     return compiledScripts.get(key);
                 }
-                CompiledScript compiledScript = ((Compilable) engine).compile(macros.getContent());
+                CompiledScript compiledScript = compilable.compile(macros.getContent());
                 compiledScripts.put(macros.getName(), compiledScript);
                 return compiledScript;
             } catch (ScriptException e) {
-                final String message = String.format("Error during compilation of %s macros: %s", macros.getName(),
+                final String message = "Error during compilation of %s macros: %s".formatted(macros.getName(),
                         e.getMessage());
                 log.error(message, e);
                 throw new MacrosCompilationException(message, e);
             }
         } else {
-            String message = String.format("Engine %s is not compilable", macros.getEngine());
+            String message = "Engine %s is not compilable".formatted(macros.getEngine());
             log.error(message);
             throw new MacrosCompilationException(message);
         }
@@ -133,7 +133,7 @@ public class ScriptMacrosCalculator implements MacrosCalculator {
         if (engine instanceof Invocable) {
             return compile(engine, macros);
         } else {
-            throw new MacrosCompilationException(String.format("Engine %s is not invocable", macros.getEngine()));
+            throw new MacrosCompilationException("Engine %s is not invocable".formatted(macros.getEngine()));
         }
     }
 }
