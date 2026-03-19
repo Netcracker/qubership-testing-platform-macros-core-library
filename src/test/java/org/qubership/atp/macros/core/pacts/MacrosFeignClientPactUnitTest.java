@@ -45,7 +45,6 @@ import org.springframework.context.annotation.Import;
 import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.TestPropertySource;
-import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.context.junit.jupiter.SpringJUnitConfig;
 
 import au.com.dius.pact.consumer.dsl.DslPart;
@@ -61,7 +60,7 @@ import au.com.dius.pact.core.model.annotations.Pact;
 import au.com.dius.pact.core.model.matchingrules.DateMatcher;
 
 @EnableFeignClients(clients = {MacrosFeignClient.class})
-@ExtendWith({SpringExtension.class, PactConsumerTestExt.class})
+@ExtendWith({PactConsumerTestExt.class})
 @SpringBootTest
 @ActiveProfiles("disable-security")
 @SpringJUnitConfig(classes = {MacrosFeignClientPactUnitTest.TestApp.class})
